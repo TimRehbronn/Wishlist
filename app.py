@@ -149,6 +149,51 @@ else:
     
     st.markdown("---")
     
+    # Edit Dialog (if editing)
+    if 'editing_item_index' in st.session_state and st.session_state.editing_item_index is not None:
+        edit_index = st.session_state.editing_item_index
+        item_to_edit = wishlist_data['items'][edit_index]
+        
+        st.subheader(f"✏️ Bearbeite: {item_to_edit['gift_name']}")
+        
+        with st.form(key='edit_form'):
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                edit_gift_name = st.text_input("🎁 Geschenk Name", value=item_to_edit['gift_name'])
+                edit_purchase_link = st.text_input("🔗 Kauflink", value=item_to_edit.get('purchase_link', ''))
+                edit_price = st.text_input("💰 Preis", value=item_to_edit.get('price', ''))
+            
+            with col2:
+                edit_amazon_link = st.text_input("📦 Amazon Link", value=item_to_edit.get('amazon_link', ''))
+                edit_is_highlight = st.checkbox("⭐ Als Highlight markieren", value=item_to_edit.get('is_highlight', False))
+            
+            col_save, col_cancel = st.columns(2)
+            with col_save:
+                save_button = st.form_submit_button("💾 Speichern", use_container_width=True)
+            with col_cancel:
+                cancel_button = st.form_submit_button("❌ Abbrechen", use_container_width=True)
+            
+            if save_button:
+                wishlist_data['items'][edit_index] = {
+                    "gift_name": edit_gift_name,
+                    "purchase_link": edit_purchase_link,
+                    "is_gifted": item_to_edit.get('is_gifted', False),
+                    "price": edit_price,
+                    "amazon_link": edit_amazon_link,
+                    "is_highlight": edit_is_highlight
+                }
+                save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
+                st.session_state.editing_item_index = None
+                st.success("✅ Änderungen gespeichert!")
+                st.rerun()
+            
+            if cancel_button:
+                st.session_state.editing_item_index = None
+                st.rerun()
+        
+        st.markdown("---")
+    
     # Item input form
     st.subheader("➕ Neues Geschenk hinzufügen")
     with st.form(key='item_form', clear_on_submit=True):
@@ -156,17 +201,23 @@ else:
         
         with col1:
             gift_name = st.text_input("🎁 Geschenk Name", placeholder="z.B. Buch, Spielzeug, ...")
+            purchase_link = st.text_input("🔗 Kauflink (optional)", placeholder="https://...")
+            price = st.text_input("💰 Preis (optional)", placeholder="z.B. 29,99€")
         
         with col2:
-            purchase_link = st.text_input("🔗 Kauflink (optional)", placeholder="https://...")
+            amazon_link = st.text_input("📦 Amazon Link (optional)", placeholder="https://amazon.de/...")
+            is_highlight = st.checkbox("⭐ Als Highlight markieren", help="Item wird gelb hervorgehoben")
         
-        submit_button = st.form_submit_button("Hinzufügen", use_container_width=True)
+        submit_button = st.form_submit_button("➕ Hinzufügen", use_container_width=True)
         
         if submit_button and gift_name:
             item = {
                 "gift_name": gift_name,
                 "purchase_link": purchase_link,
-                "is_gifted": False
+                "is_gifted": False,
+                "price": price,
+                "amazon_link": amazon_link,
+                "is_highlight": is_highlight
             }
             wishlist_data['items'].append(item)
             save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
@@ -195,33 +246,55 @@ else:
         st.markdown("---")
         
         # Display items
-        items_to_delete = []
-        items_to_toggle = []
+        actions_to_process = []
         
         for index, item in enumerate(wishlist_data['items']):
             item_display = WishlistItem(
                 item['gift_name'],
                 item['purchase_link'],
-                item.get('is_gifted', False)
+                item.get('is_gifted', False),
+                item.get('price', ''),
+                item.get('amazon_link', ''),
+                item.get('is_highlight', False)
             )
-            action = item_display.display(index)
+            action = item_display.display(index, len(wishlist_data['items']))
             
-            if action == "delete":
-                items_to_delete.append(index)
-            elif action == "toggle_gift":
-                items_to_toggle.append(index)
+            if action:
+                actions_to_process.append(action)
         
-        # Process deletions (in reverse order to maintain indices)
-        for index in reversed(items_to_delete):
-            wishlist_data['items'].pop(index)
-            save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
-            st.rerun()
-        
-        # Process gift toggles
-        for index in items_to_toggle:
-            wishlist_data['items'][index]['is_gifted'] = True
-            save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
-            st.rerun()
+        # Process actions
+        for action in actions_to_process:
+            action_type = action.get('action')
+            action_index = action.get('index')
+            
+            if action_type == "delete":
+                wishlist_data['items'].pop(action_index)
+                save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
+                st.rerun()
+            
+            elif action_type == "toggle_gift":
+                wishlist_data['items'][action_index]['is_gifted'] = True
+                save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
+                st.rerun()
+            
+            elif action_type == "move_up" and action_index > 0:
+                # Tausche mit Item davor
+                wishlist_data['items'][action_index], wishlist_data['items'][action_index - 1] = \
+                    wishlist_data['items'][action_index - 1], wishlist_data['items'][action_index]
+                save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
+                st.rerun()
+            
+            elif action_type == "move_down" and action_index < len(wishlist_data['items']) - 1:
+                # Tausche mit Item danach
+                wishlist_data['items'][action_index], wishlist_data['items'][action_index + 1] = \
+                    wishlist_data['items'][action_index + 1], wishlist_data['items'][action_index]
+                save_wishlist(st.session_state.current_wishlist_id, wishlist_data)
+                st.rerun()
+            
+            elif action_type == "edit":
+                # Setze edit mode in session state
+                st.session_state.editing_item_index = action_index
+                st.rerun()
 
 st.markdown("---")
 st.markdown("<p style='text-align: center; color: #666;'>🎄 Frohe Weihnachten! 🎅</p>", unsafe_allow_html=True)
