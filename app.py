@@ -61,16 +61,45 @@ with st.expander("🔧 Storage diagnostics", expanded=False):
         import os
         from utils.remote_storage import _get_secrets
         token, repo, prefix = _get_secrets()
+        # Compute whether a token exists in secrets (top-level or [general])
+        secrets_has_token = False
+        try:
+            if hasattr(st, "secrets"):
+                if st.secrets.get("GH_TOKEN"):
+                    secrets_has_token = True
+                else:
+                    gen = st.secrets.get("general")
+                    if isinstance(gen, dict) and gen.get("GH_TOKEN"):
+                        secrets_has_token = True
+        except Exception:
+            pass
+
         st.write({
             "remote_available": remote_available(),
             "GH_REPO": repo or "(missing)",
             "GH_PATH": prefix or "(missing)",
             "GH_TOKEN_present": bool(token),
             "ENV_has_token": bool(os.environ.get("GH_TOKEN")),
-            "SECRETS_has_token": bool(getattr(st, "secrets", {}).get("GH_TOKEN") if hasattr(st, "secrets") else False),
+            "SECRETS_has_token": secrets_has_token,
         })
         if not remote_available():
             st.info("Add secrets in Streamlit Cloud: GH_TOKEN, GH_REPO, GH_PATH. After saving, wait ~1 minute and reload.")
+        else:
+            # Optional self-test to verify GitHub write access
+            if st.button("Run remote self-test"):
+                try:
+                    from utils.remote_storage import _put_file, _get_file
+                    import datetime
+                    now = datetime.datetime.utcnow().isoformat() + "Z"
+                    test_path = f"{prefix}/healthcheck.txt"
+                    _put_file(token, repo, test_path, f"ok {now}".encode("utf-8"), "chore: remote storage healthcheck")
+                    echoed = _get_file(token, repo, test_path)
+                    if echoed and echoed.startswith("ok "):
+                        st.success("Remote self-test passed: wrote and read healthcheck.txt")
+                    else:
+                        st.warning("Remote self-test wrote file but read-back content was unexpected.")
+                except Exception as e:
+                    st.error(f"Remote self-test failed: {e}")
     except Exception as e:
         st.warning(f"Diagnostics unavailable: {e}")
 

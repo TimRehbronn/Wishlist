@@ -16,12 +16,18 @@ def _get_secrets():
     # Prefer st.secrets if available
     if st is not None:
         try:
-            # Support both top-level keys and a [general] table
-            top = dict(st.secrets)
-            general = top.get("general", {}) if isinstance(top.get("general", {}), dict) else {}
-            token = top.get("GH_TOKEN") or general.get("GH_TOKEN")
-            repo = top.get("GH_REPO") or general.get("GH_REPO")
-            path_prefix = top.get("GH_PATH") or general.get("GH_PATH")
+            # Read either top-level or [general] table without casting to dict
+            token = st.secrets.get("GH_TOKEN")
+            repo = st.secrets.get("GH_REPO")
+            path_prefix = st.secrets.get("GH_PATH")
+
+            general = st.secrets.get("general")
+            if not token and isinstance(general, dict):
+                token = general.get("GH_TOKEN")
+            if not repo and isinstance(general, dict):
+                repo = general.get("GH_REPO")
+            if not path_prefix and isinstance(general, dict):
+                path_prefix = general.get("GH_PATH")
         except Exception:
             pass
     # Fallback to environment
