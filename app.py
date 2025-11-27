@@ -55,6 +55,25 @@ st.markdown(
         unsafe_allow_html=True
 )
 
+# Optional diagnostics to help configure remote storage
+with st.expander("🔧 Storage diagnostics", expanded=False):
+    try:
+        import os
+        from utils.remote_storage import _get_secrets
+        token, repo, prefix = _get_secrets()
+        st.write({
+            "remote_available": remote_available(),
+            "GH_REPO": repo or "(missing)",
+            "GH_PATH": prefix or "(missing)",
+            "GH_TOKEN_present": bool(token),
+            "ENV_has_token": bool(os.environ.get("GH_TOKEN")),
+            "SECRETS_has_token": bool(getattr(st, "secrets", {}).get("GH_TOKEN") if hasattr(st, "secrets") else False),
+        })
+        if not remote_available():
+            st.info("Add secrets in Streamlit Cloud: GH_TOKEN, GH_REPO, GH_PATH. After saving, wait ~1 minute and reload.")
+    except Exception as e:
+        st.warning(f"Diagnostics unavailable: {e}")
+
 # Initialize session state
 if 'current_wishlist_id' not in st.session_state:
     st.session_state.current_wishlist_id = None
