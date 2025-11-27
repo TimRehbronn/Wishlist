@@ -63,31 +63,40 @@ class WishlistItem:
         
         st.markdown(html_content, unsafe_allow_html=True)
         
-        # Buttons außerhalb des HTML-Containers
+        # Buttons außerhalb des HTML-Containers (in einer Linie nebeneinander)
         if not self.is_gifted:
-            col_gift, col_up, col_down, col_delete, col_edit = st.columns([5, 1, 1, 1, 1])
+            btn_cols = st.columns([3, 1, 1, 1, 1])
             
-            with col_gift:
+            # 🎅 Schenken
+            with btn_cols[0]:
                 if st.button("🎅 Ich möchte das schenken", key=f"gift_{index}", use_container_width=True):
                     return {"action": "toggle_gift", "index": index}
             
-            with col_up:
+            # ⬆️ Nach oben
+            with btn_cols[1]:
                 if index > 0:
-                    if st.button("⬆️", key=f"up_{index}", help="Nach oben"):
+                    if st.button("⬆️", key=f"up_{index}", help="Nach oben", use_container_width=True):
                         return {"action": "move_up", "index": index}
+                else:
+                    st.button("⬆️", key=f"up_disabled_{index}", disabled=True, use_container_width=True)
             
-            with col_down:
+            # ⬇️ Nach unten
+            with btn_cols[2]:
                 if index < total_items - 1:
-                    if st.button("⬇️", key=f"down_{index}", help="Nach unten"):
+                    if st.button("⬇️", key=f"down_{index}", help="Nach unten", use_container_width=True):
                         return {"action": "move_down", "index": index}
+                else:
+                    st.button("⬇️", key=f"down_disabled_{index}", disabled=True, use_container_width=True)
             
-            with col_delete:
-                if st.button("🗑️", key=f"delete_{index}", help="Löschen"):
-                    return {"action": "delete", "index": index}
-            
-            with col_edit:
-                if st.button("✏️", key=f"edit_{index}", help="Bearbeiten"):
+            # ✏️ Bearbeiten
+            with btn_cols[3]:
+                if st.button("✏️", key=f"edit_{index}", help="Bearbeiten", use_container_width=True):
                     return {"action": "edit", "index": index}
+            
+            # 🗑️ Löschen
+            with btn_cols[4]:
+                if st.button("🗑️", key=f"delete_{index}", help="Löschen", use_container_width=True):
+                    return {"action": "delete", "index": index}
         
         return None
 

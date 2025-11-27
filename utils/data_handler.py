@@ -2,6 +2,13 @@ from typing import List, Dict
 import json
 import os
 import hashlib
+from .remote_storage import (
+    remote_available,
+    get_all_wishlists_remote,
+    save_wishlists_index_remote,
+    load_wishlist_remote,
+    save_wishlist_remote,
+)
 
 DATA_DIR = 'data'
 
@@ -15,6 +22,8 @@ def get_wishlist_filename(wishlist_id: str) -> str:
 
 def get_all_wishlists() -> List[Dict]:
     """Load all available wishlists (id and name only)"""
+    if remote_available():
+        return get_all_wishlists_remote()
     ensure_data_dir()
     index_file = os.path.join(DATA_DIR, 'wishlists_index.json')
     if os.path.exists(index_file):
@@ -27,6 +36,8 @@ def get_all_wishlists() -> List[Dict]:
 
 def save_wishlists_index(wishlists: List[Dict]) -> None:
     """Save wishlists index"""
+    if remote_available():
+        return save_wishlists_index_remote(wishlists)
     ensure_data_dir()
     index_file = os.path.join(DATA_DIR, 'wishlists_index.json')
     with open(index_file, 'w', encoding='utf-8') as file:
@@ -64,6 +75,8 @@ def create_wishlist(name: str, password: str) -> str:
 
 def load_wishlist(wishlist_id: str) -> Dict:
     """Load a specific wishlist"""
+    if remote_available():
+        return load_wishlist_remote(wishlist_id)
     ensure_data_dir()
     filename = get_wishlist_filename(wishlist_id)
     if os.path.exists(filename):
@@ -76,6 +89,8 @@ def load_wishlist(wishlist_id: str) -> Dict:
 
 def save_wishlist(wishlist_id: str, data: Dict) -> None:
     """Save a specific wishlist"""
+    if remote_available():
+        return save_wishlist_remote(wishlist_id, data)
     ensure_data_dir()
     filename = get_wishlist_filename(wishlist_id)
     with open(filename, 'w', encoding='utf-8') as file:
