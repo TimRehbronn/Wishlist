@@ -6,6 +6,7 @@ from utils.data_handler import (
     save_wishlist,
     verify_wishlist_password
 )
+from utils.remote_storage import remote_available
 from components.wishlist_item import WishlistItem
 
 # Page configuration
@@ -31,8 +32,28 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Application title
+# Application title + storage badge
 st.markdown('<h1 class="big-title">🎄 Weihnachts-Wunschliste 🎁</h1>', unsafe_allow_html=True)
+
+# Storage status badge
+storage_label = "GitHub" if remote_available() else "Local"
+badge_color = "#1976d2" if storage_label == "GitHub" else "#888"
+st.markdown(
+        f"""
+        <div style="text-align:center; margin-top:-10px;">
+            <span style="
+                display:inline-block;
+                padding:6px 10px;
+                border-radius:12px;
+                background:{badge_color};
+                color:white;
+                font-size:12px;
+                letter-spacing:0.3px;
+            ">Storage: {storage_label}</span>
+        </div>
+        """,
+        unsafe_allow_html=True
+)
 
 # Initialize session state
 if 'current_wishlist_id' not in st.session_state:
