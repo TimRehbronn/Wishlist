@@ -2,13 +2,29 @@ import os
 import json
 import base64
 import requests
+try:
+    import streamlit as st  # for st.secrets on Streamlit Cloud
+except Exception:
+    st = None
 
 
 def _get_secrets():
-    """Fetch required secrets from environment variables (Streamlit Cloud uses env from st.secrets)."""
-    token = os.environ.get("GH_TOKEN")
-    repo = os.environ.get("GH_REPO")  # e.g., "TimRehbronn/Wishlist"
-    path_prefix = os.environ.get("GH_PATH", "cloud-data")  # folder in repo to store files
+    """Fetch required secrets. Prefer st.secrets on Streamlit Cloud, fallback to environment variables locally."""
+    token = None
+    repo = None
+    path_prefix = None
+    # Prefer st.secrets if available
+    if st is not None:
+        try:
+            token = st.secrets.get("GH_TOKEN")
+            repo = st.secrets.get("GH_REPO")
+            path_prefix = st.secrets.get("GH_PATH")
+        except Exception:
+            pass
+    # Fallback to environment
+    token = token or os.environ.get("GH_TOKEN")
+    repo = repo or os.environ.get("GH_REPO")  # e.g., "TimRehbronn/Wishlist"
+    path_prefix = path_prefix or os.environ.get("GH_PATH", "cloud-data")  # folder in repo to store files
     return token, repo, path_prefix
 
 
