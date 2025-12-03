@@ -42,6 +42,14 @@
             "price": "35,99€",
             "amazon_link": "amazon.de/Repos-Production-RPOD0022-Wonders-Grundspiel/dp/B08HV8BSH6/ref=asc_df_B08HV8BSH6?mcid=f23fcb265bde3e85a786f535599235a8&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=696985972741&hvpos=&hvnetw=g&hvrand=1544527778591232227&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9044817&hvtargid=pla-965061566096&psc=1&hvocijid=1544527778591232227-B08HV8BSH6-&hvexpln=0",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Twilight Imperium Edition 4",
+            "purchase_link": "https://www.fantasywelt.de/Twilight-Imperium-4-Edition-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMIvKa_7eqhkQMVIKuDBx1yowGoEAQYASABEgKDPfD_BwE",
+            "is_gifted": false,
+            "price": "123€",
+            "amazon_link": "",
+            "is_highlight": false
         }
     ]
 }
