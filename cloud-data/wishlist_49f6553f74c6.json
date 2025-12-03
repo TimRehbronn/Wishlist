@@ -66,6 +66,14 @@
             "price": "47,10€",
             "amazon_link": "",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Funkenschlag ",
+            "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1056391607?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMI4cWR8uuhkQMVu4CDBx27uA2HEAQYASABEgIfVfD_BwE",
+            "is_gifted": false,
+            "price": "40€",
+            "amazon_link": "",
+            "is_highlight": false
         }
     ]
 }
