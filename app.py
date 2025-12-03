@@ -69,7 +69,7 @@ with st.expander("🔧 Storage diagnostics", expanded=False):
                     secrets_has_token = True
                 else:
                     gen = st.secrets.get("general")
-                    if isinstance(gen, dict) and gen.get("GH_TOKEN"):
+                    if gen is not None and hasattr(gen, "get") and gen.get("GH_TOKEN"):
                         secrets_has_token = True
         except Exception:
             pass

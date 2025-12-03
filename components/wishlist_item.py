@@ -69,7 +69,7 @@ class WishlistItem:
             
             # 🎅 Schenken
             with btn_cols[0]:
-                if st.button("🎅 Ich möchte das schenken", key=f"gift_{index}", use_container_width=True):
+                if st.button("Ich möchte das schenken", key=f"gift_{index}", use_container_width=True):
                     return {"action": "toggle_gift", "index": index}
             
             # ⬆️ Nach oben
@@ -90,12 +90,12 @@ class WishlistItem:
             
             # ✏️ Bearbeiten
             with btn_cols[3]:
-                if st.button("✏️", key=f"edit_{index}", help="Bearbeiten", use_container_width=True):
+                if st.button("Bearbeiten", key=f"edit_{index}", help="Bearbeiten", use_container_width=True):
                     return {"action": "edit", "index": index}
             
             # 🗑️ Löschen
             with btn_cols[4]:
-                if st.button("🗑️", key=f"delete_{index}", help="Löschen", use_container_width=True):
+                if st.button("Löschen", key=f"delete_{index}", help="Löschen", use_container_width=True):
                     return {"action": "delete", "index": index}
         
         return None

@@ -16,18 +16,21 @@ def _get_secrets():
     # Prefer st.secrets if available
     if st is not None:
         try:
-            # Read either top-level or [general] table without casting to dict
+            # Try top-level keys first
             token = st.secrets.get("GH_TOKEN")
             repo = st.secrets.get("GH_REPO")
             path_prefix = st.secrets.get("GH_PATH")
 
+            # If not found, try [general] section
+            # Note: st.secrets returns AttrDict, not plain dict, so use hasattr/getattr
             general = st.secrets.get("general")
-            if not token and isinstance(general, dict):
-                token = general.get("GH_TOKEN")
-            if not repo and isinstance(general, dict):
-                repo = general.get("GH_REPO")
-            if not path_prefix and isinstance(general, dict):
-                path_prefix = general.get("GH_PATH")
+            if general is not None and hasattr(general, "get"):
+                if not token:
+                    token = general.get("GH_TOKEN")
+                if not repo:
+                    repo = general.get("GH_REPO")
+                if not path_prefix:
+                    path_prefix = general.get("GH_PATH")
         except Exception:
             pass
     # Fallback to environment
