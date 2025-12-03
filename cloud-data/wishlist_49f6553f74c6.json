@@ -60,18 +60,18 @@
             "is_highlight": false
         },
         {
-            "gift_name": "Terraforming Mars",
-            "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1045830315?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMIt63PjeuhkQMVA5mDBx2wuAEDEAQYASABEgI9b_D_BwE",
-            "is_gifted": false,
-            "price": "59,99€",
-            "amazon_link": "",
-            "is_highlight": false
-        },
-        {
             "gift_name": "Funkenschlag ",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1056391607?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMI4cWR8uuhkQMVu4CDBx27uA2HEAQYASABEgIfVfD_BwE",
             "is_gifted": false,
             "price": "40€",
+            "amazon_link": "",
+            "is_highlight": false
+        },
+        {
+            "gift_name": "Terraforming Mars",
+            "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1045830315?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMIt63PjeuhkQMVA5mDBx2wuAEDEAQYASABEgI9b_D_BwE",
+            "is_gifted": false,
+            "price": "59,99€",
             "amazon_link": "",
             "is_highlight": false
         },
