@@ -20,20 +20,20 @@
             "is_highlight": true
         },
         {
-            "gift_name": "Endeavor: Die Tiefsee",
-            "purchase_link": "https://www.mueller.de/p/endeavor-die-tiefsee-PPN3138020/?_pmclid=b_21407444_wp_4754915_k_6951541&gad_source=1&gad_campaignid=17426380067&gbraid=0AAAAAC8Uvxy7YbRsHjScd7gPZwXgxZP2Y&gclid=EAIaIQobChMIlpOyoeqhkQMV3K6DBx2KhwSNEAQYAiABEgK7x_D_BwE",
-            "is_gifted": false,
-            "price": "54,95€",
-            "amazon_link": "",
-            "is_highlight": true
-        },
-        {
             "gift_name": "Everdell Complete Collectors Edition",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1072540410?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMIypqsxuqhkQMVjqODBx3M9CJyEAQYASABEgIPqvD_BwE",
             "is_gifted": false,
             "price": "282€",
             "amazon_link": "",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Endeavor: Die Tiefsee",
+            "purchase_link": "https://www.mueller.de/p/endeavor-die-tiefsee-PPN3138020/?_pmclid=b_21407444_wp_4754915_k_6951541&gad_source=1&gad_campaignid=17426380067&gbraid=0AAAAAC8Uvxy7YbRsHjScd7gPZwXgxZP2Y&gclid=EAIaIQobChMIlpOyoeqhkQMV3K6DBx2KhwSNEAQYAiABEgK7x_D_BwE",
+            "is_gifted": false,
+            "price": "54,95€",
+            "amazon_link": "",
+            "is_highlight": true
         },
         {
             "gift_name": "7 Wonders",
