@@ -4,20 +4,20 @@
     "password_hash": "c0d19e4483571ff07cb01a4d3f5484102d7f333c4cafa64a2821f55031ea6041",
     "items": [
         {
-            "gift_name": "Silverfrost ",
-            "purchase_link": "https://www.fantasywelt.de/Silverfrost-Ein-Spiel-in-der-Welt-von-Everdell-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMI7K6J9emhkQMVCLGDBx27GBKwEAQYAyABEgJ01_D_BwE",
-            "is_gifted": false,
-            "price": "53,99€",
-            "amazon_link": "",
-            "is_highlight": true
-        },
-        {
             "gift_name": "Everdell Complete Collectors Edition",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1072540410?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMIypqsxuqhkQMVjqODBx3M9CJyEAQYASABEgIPqvD_BwE",
             "is_gifted": false,
             "price": "282€",
             "amazon_link": "",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Silverfrost ",
+            "purchase_link": "https://www.fantasywelt.de/Silverfrost-Ein-Spiel-in-der-Welt-von-Everdell-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMI7K6J9emhkQMVCLGDBx27GBKwEAQYAyABEgJ01_D_BwE",
+            "is_gifted": false,
+            "price": "53,99€",
+            "amazon_link": "",
+            "is_highlight": true
         },
         {
             "gift_name": "Underwater Cities",
