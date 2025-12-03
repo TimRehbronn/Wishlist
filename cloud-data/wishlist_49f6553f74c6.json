@@ -18,6 +18,14 @@
             "price": "59,99€",
             "amazon_link": "",
             "is_highlight": true
+        },
+        {
+            "gift_name": "Endeavor: Die Tiefsee",
+            "purchase_link": "https://www.mueller.de/p/endeavor-die-tiefsee-PPN3138020/?_pmclid=b_21407444_wp_4754915_k_6951541&gad_source=1&gad_campaignid=17426380067&gbraid=0AAAAAC8Uvxy7YbRsHjScd7gPZwXgxZP2Y&gclid=EAIaIQobChMIlpOyoeqhkQMV3K6DBx2KhwSNEAQYAiABEgK7x_D_BwE",
+            "is_gifted": false,
+            "price": "54,95€",
+            "amazon_link": "",
+            "is_highlight": true
         }
     ]
 }
