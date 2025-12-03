@@ -58,6 +58,14 @@
             "price": "59,99€",
             "amazon_link": "",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Great Western Trail",
+            "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1062606048",
+            "is_gifted": false,
+            "price": "47,10€",
+            "amazon_link": "",
+            "is_highlight": false
         }
     ]
 }
