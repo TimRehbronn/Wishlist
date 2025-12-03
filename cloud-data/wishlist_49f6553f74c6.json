@@ -2,5 +2,14 @@
     "id": "49f6553f74c6",
     "name": "Tims Weihnachtswunschliste 2025",
     "password_hash": "c0d19e4483571ff07cb01a4d3f5484102d7f333c4cafa64a2821f55031ea6041",
-    "items": []
+    "items": [
+        {
+            "gift_name": "Underwater Cities",
+            "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1060111317?ProvID=15322716&gad_source=1&gad_campaignid=21869002245&gbraid=0AAAAADwkCX6PrZotbXTj8Qlk59Xo1cFUT",
+            "is_gifted": false,
+            "price": "59,99€",
+            "amazon_link": "",
+            "is_highlight": true
+        }
+    ]
 }
