@@ -139,3 +139,20 @@ def save_wishlist_remote(wishlist_id: str, data: dict):
     payload = json.dumps(data, indent=4, ensure_ascii=False).encode("utf-8")
     _put_file(token, repo, wishlist_path(prefix, wishlist_id), payload, f"feat: update wishlist {wishlist_id}")
 
+
+def delete_wishlist_remote(wishlist_id: str):
+    """Delete a wishlist file from GitHub (optional - file may not exist)"""
+    token, repo, prefix = _get_secrets()
+    if not remote_available():
+        return
+    path = wishlist_path(prefix, wishlist_id)
+    sha = _get_file_sha(token, repo, path)
+    if sha:
+        url = f"{_repo_api(repo)}/contents/{path}"
+        data = {
+            "message": f"chore: delete wishlist {wishlist_id}",
+            "sha": sha,
+            "branch": "main",
+        }
+        requests.delete(url, headers=_gh_headers(token), json=data)
+

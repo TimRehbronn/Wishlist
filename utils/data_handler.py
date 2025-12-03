@@ -109,3 +109,23 @@ def verify_wishlist_password(wishlist_id: str, password: str) -> bool:
     password_hash = hashlib.sha256(password.encode()).hexdigest()
     return wishlist.get('password_hash') == password_hash
 
+
+def delete_wishlist(wishlist_id: str) -> bool:
+    """Delete a wishlist by ID. Returns True if successful."""
+    from .remote_storage import delete_wishlist_remote
+    
+    # Remove from index
+    wishlists = get_all_wishlists()
+    wishlists = [w for w in wishlists if w.get('id') != wishlist_id]
+    save_wishlists_index(wishlists)
+    
+    # Delete the wishlist file
+    if remote_available():
+        delete_wishlist_remote(wishlist_id)
+    else:
+        filename = get_wishlist_filename(wishlist_id)
+        if os.path.exists(filename):
+            os.remove(filename)
+    
+    return True
+

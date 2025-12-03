@@ -4,7 +4,8 @@ from utils.data_handler import (
     create_wishlist, 
     load_wishlist, 
     save_wishlist,
-    verify_wishlist_password
+    verify_wishlist_password,
+    delete_wishlist
 )
 from utils.remote_storage import remote_available
 from components.wishlist_item import WishlistItem
@@ -125,7 +126,7 @@ if st.session_state.current_wishlist_id is None:
         else:
             # Display available wishlists
             for wishlist in wishlists:
-                col1, col2 = st.columns([3, 1])
+                col1, col2, col3 = st.columns([3, 1, 1])
                 with col1:
                     st.markdown(f"### 🎅 {wishlist['name']}")
                 with col2:
@@ -133,6 +134,26 @@ if st.session_state.current_wishlist_id is None:
                         st.session_state.current_wishlist_id = wishlist['id']
                         st.session_state.authenticated = False
                         st.rerun()
+                with col3:
+                    if st.button("🗑️", key=f"delete_{wishlist['id']}", help="Liste löschen"):
+                        st.session_state[f"confirm_delete_{wishlist['id']}"] = True
+                        st.rerun()
+                
+                # Confirm delete dialog
+                if st.session_state.get(f"confirm_delete_{wishlist['id']}"):
+                    st.warning(f"⚠️ '{wishlist['name']}' wirklich löschen?")
+                    c1, c2 = st.columns(2)
+                    with c1:
+                        if st.button("Ja, löschen", key=f"confirm_yes_{wishlist['id']}"):
+                            delete_wishlist(wishlist['id'])
+                            st.session_state[f"confirm_delete_{wishlist['id']}"] = False
+                            st.success("Liste gelöscht!")
+                            st.rerun()
+                    with c2:
+                        if st.button("Abbrechen", key=f"confirm_no_{wishlist['id']}"):
+                            st.session_state[f"confirm_delete_{wishlist['id']}"] = False
+                            st.rerun()
+                
                 st.markdown("---")
     
     with tab2:
