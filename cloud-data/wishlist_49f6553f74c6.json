@@ -36,19 +36,19 @@
             "is_highlight": true
         },
         {
-            "gift_name": "Twilight Imperium Edition 4",
-            "purchase_link": "https://www.fantasywelt.de/Twilight-Imperium-4-Edition-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMIvKa_7eqhkQMVIKuDBx1yowGoEAQYASABEgKDPfD_BwE",
-            "is_gifted": false,
-            "price": "123€",
-            "amazon_link": "",
-            "is_highlight": false
-        },
-        {
             "gift_name": "Blut auf dem Uhrenturm",
             "purchase_link": "",
             "is_gifted": false,
             "price": "151€",
             "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
+            "is_highlight": false
+        },
+        {
+            "gift_name": "Twilight Imperium Edition 4",
+            "purchase_link": "https://www.fantasywelt.de/Twilight-Imperium-4-Edition-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMIvKa_7eqhkQMVIKuDBx1yowGoEAQYASABEgKDPfD_BwE",
+            "is_gifted": false,
+            "price": "123€",
+            "amazon_link": "",
             "is_highlight": false
         },
         {
