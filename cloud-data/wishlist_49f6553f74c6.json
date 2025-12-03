@@ -82,6 +82,14 @@
             "price": "38,36€",
             "amazon_link": "",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Blut auf dem Uhrenturm",
+            "purchase_link": "",
+            "is_gifted": false,
+            "price": "151€",
+            "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
+            "is_highlight": false
         }
     ]
 }
