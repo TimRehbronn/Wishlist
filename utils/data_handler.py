@@ -45,7 +45,7 @@ def save_wishlists_index(wishlists: List[Dict]) -> None:
 
 def create_wishlist(name: str, password: str) -> str:
     """Create a new wishlist and return its ID"""
-    ensure_data_dir()
+    import hashlib
     
     # Generate unique ID from name and timestamp
     wishlist_id = hashlib.md5(f"{name}{os.urandom(8).hex()}".encode()).hexdigest()[:12]
@@ -61,10 +61,14 @@ def create_wishlist(name: str, password: str) -> str:
         "items": []
     }
     
-    # Save wishlist file
-    filename = get_wishlist_filename(wishlist_id)
-    with open(filename, 'w', encoding='utf-8') as file:
-        json.dump(wishlist_data, file, indent=4, ensure_ascii=False)
+    # Save wishlist file (use remote if available)
+    if remote_available():
+        save_wishlist_remote(wishlist_id, wishlist_data)
+    else:
+        ensure_data_dir()
+        filename = get_wishlist_filename(wishlist_id)
+        with open(filename, 'w', encoding='utf-8') as file:
+            json.dump(wishlist_data, file, indent=4, ensure_ascii=False)
     
     # Update index
     wishlists = get_all_wishlists()
