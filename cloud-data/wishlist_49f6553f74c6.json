@@ -12,20 +12,20 @@
             "is_highlight": true
         },
         {
-            "gift_name": "Silverfrost ",
-            "purchase_link": "https://www.fantasywelt.de/Silverfrost-Ein-Spiel-in-der-Welt-von-Everdell-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMI7K6J9emhkQMVCLGDBx27GBKwEAQYAyABEgJ01_D_BwE",
-            "is_gifted": false,
-            "price": "53,99€",
-            "amazon_link": "",
-            "is_highlight": true
-        },
-        {
             "gift_name": "Blut auf dem Uhrenturm",
             "purchase_link": "",
             "is_gifted": false,
             "price": "151€",
             "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
             "is_highlight": false
+        },
+        {
+            "gift_name": "Silverfrost ",
+            "purchase_link": "https://www.fantasywelt.de/Silverfrost-Ein-Spiel-in-der-Welt-von-Everdell-DE?gad_source=1&gad_campaignid=21476223493&gbraid=0AAAAADr41wdhyz6WfOD9uGI9ERP41Si8G&gclid=EAIaIQobChMI7K6J9emhkQMVCLGDBx27GBKwEAQYAyABEgJ01_D_BwE",
+            "is_gifted": false,
+            "price": "53,99€",
+            "amazon_link": "",
+            "is_highlight": true
         },
         {
             "gift_name": "Underwater Cities",
