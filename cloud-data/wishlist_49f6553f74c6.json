@@ -4,19 +4,19 @@
     "password_hash": "c0d19e4483571ff07cb01a4d3f5484102d7f333c4cafa64a2821f55031ea6041",
     "items": [
         {
-            "gift_name": "Blut auf dem Uhrenturm",
-            "purchase_link": "",
-            "is_gifted": false,
-            "price": "151€",
-            "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
-            "is_highlight": true
-        },
-        {
             "gift_name": "Everdell Complete Collectors Edition",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1072540410?ProvID=15322715&gad_source=1&gad_campaignid=17337465255&gbraid=0AAAAADwkCX6gzMV1dLAyy3UtaEb3lzSwz&gclid=EAIaIQobChMIypqsxuqhkQMVjqODBx3M9CJyEAQYASABEgIPqvD_BwE",
             "is_gifted": false,
             "price": "282€",
             "amazon_link": "",
+            "is_highlight": true
+        },
+        {
+            "gift_name": "Blut auf dem Uhrenturm",
+            "purchase_link": "",
+            "is_gifted": false,
+            "price": "151€",
+            "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
             "is_highlight": true
         },
         {
