@@ -20,19 +20,19 @@
             "is_highlight": true
         },
         {
-            "gift_name": "Blut auf dem Uhrenturm",
-            "purchase_link": "",
-            "is_gifted": false,
-            "price": "151€",
-            "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
-            "is_highlight": true
-        },
-        {
             "gift_name": "Underwater Cities",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1060111317?ProvID=15322716&gad_source=1&gad_campaignid=21869002245&gbraid=0AAAAADwkCX6PrZotbXTj8Qlk59Xo1cFUT",
             "is_gifted": false,
             "price": "59,99€",
             "amazon_link": "",
+            "is_highlight": true
+        },
+        {
+            "gift_name": "Blut auf dem Uhrenturm",
+            "purchase_link": "",
+            "is_gifted": false,
+            "price": "151€",
+            "amazon_link": "https://www.amazon.de/Pandemonium-Institute-Uhrturm-Partyspiel-Spieldauer/dp/B0BRSTMP2V",
             "is_highlight": true
         },
         {
