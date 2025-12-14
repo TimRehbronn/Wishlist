@@ -62,7 +62,7 @@
         {
             "gift_name": "Robinson Crusoe - Abenteuer auf der Verfluchten Insel",
             "purchase_link": "https://www.thalia.de/shop/home/artikeldetails/A1030056007?ProvID=15322715&gad_source=1&gad_campaignid=17339418895&gbraid=0AAAAADwkCX5K2BIUr4h-RfOX8NU3XsPxX&gclid=EAIaIQobChMIjfez0eyhkQMVCZeDBx1zaySTEAQYASABEgIfH_D_BwE",
-            "is_gifted": false,
+            "is_gifted": true,
             "price": "38,36€",
             "amazon_link": "",
             "is_highlight": false
